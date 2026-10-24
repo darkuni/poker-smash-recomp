@@ -6,6 +6,9 @@
 
 #include <rex/filesystem.h>
 #include <rex/rex_app.h>
+#include <rex/runtime.h>
+#include <rex/filesystem/vfs.h>
+#include <rex/logging.h>
 
 class PokerSmashApp : public rex::ReXApp {
  public:
@@ -19,9 +22,22 @@ class PokerSmashApp : public rex::ReXApp {
 
   // Override virtual hooks for customization:
   // void OnPostInitLogging() override {}
-  // void OnPreSetup(rex::RuntimeConfig& config) override {}
+  // GPU emulation is opt-in in ReXGlue (gpu_plugin cvar). Default to the
+  // Xenos plugin so the game actually renders; --gpu_plugin still overrides.
+  void OnPreSetup(rex::RuntimeConfig& config) override {
+    if (config.gpu_plugin.empty()) {
+      config.gpu_plugin = "xenos";
+    }
+  }
   // void OnLoadXexImage(std::string& xex_image) override {}
-  // void OnPostLoadXexImage() override {}
+  // Poker Smash opens some content with bare relative paths ("data\\textures\\").
+  // Map the "data" prefix onto the game partition so those resolve.
+  void OnPostLoadXexImage() override {
+    auto* fs = runtime()->file_system();
+    if (fs && fs->RegisterSymbolicLink("data", "\\Device\\Harddisk0\\Partition1\\data")) {
+      REXLOG_INFO("Registered relative 'data' path -> game:\\data");
+    }
+  }
   // void OnPostSetup() override {}
   // void OnCreateDialogs(rex::ui::ImGuiDrawer* drawer) override {}
   // std::unique_ptr<rex::ui::ImGuiDialog> CreateAchievementsOverlay() override;
