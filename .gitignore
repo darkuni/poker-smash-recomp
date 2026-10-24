@@ -1,0 +1,8 @@
+# Game files are never committed - supply your own dump
+assets/
+*.xex
+*.bin
+# Build output
+out/
+build/
+dist/

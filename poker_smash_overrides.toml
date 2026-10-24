@@ -1,0 +1,15 @@
+# Manual codegen overrides for Poker Smash (default.xex, TU 0.0.1.4)
+
+# C++ EH catch funclets: each ends in a noreturn call (bl 0x8221FE20) and the
+# analyzer runs straight into the next funclet. Pin their ends.
+[functions]
+0x8211D620 = { end = 0x8211D684 }
+0x821B32F8 = { end = 0x821B3360 }
+0x821CC480 = { end = 0x821CC4E8 }
+
+# Byte-offset jump table at 0x82082E98 has no bounds check; the scanner read
+# past its 44 entries into the next table. Real length = 44.
+[[switch_tables]]
+address = 0x824C5538
+register = 11
+labels = [0x824C556C, 0x824C556C, 0x824C556C, 0x824C556C, 0x824C5640, 0x824C556C, 0x824C556C, 0x824C556C, 0x824C556C, 0x824C553C, 0x824C556C, 0x824C556C, 0x824C553C, 0x824C553C, 0x824C553C, 0x824C553C, 0x824C553C, 0x824C5550, 0x824C5564, 0x824C5578, 0x824C55A4, 0x824C55B8, 0x824C55D8, 0x824C55EC, 0x824C5600, 0x824C5610, 0x824C5624, 0x824C553C, 0x824C553C, 0x824C553C, 0x824C553C, 0x824C553C, 0x824C553C, 0x824C5550, 0x824C5560, 0x824C5570, 0x824C5580, 0x824C5590, 0x824C55A0, 0x824C55AC, 0x824C55B8, 0x824C553C, 0x824C553C, 0x824C553C]
