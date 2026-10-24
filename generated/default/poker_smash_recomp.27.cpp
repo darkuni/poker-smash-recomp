@@ -28505,8 +28505,21 @@ DEFINE_REX_FUNC(sub_824351D8) {
 	return;
 }
 
-DEFINE_REX_FUNC(sub_82435220) {
+DEFINE_REX_FUNC(sub_82435208) {
 	REX_FUNC_PROLOGUE();
+	// lwz r11,16(r3)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r3.u32 + 16);
+	// lbz r11,1380(r11)
+	ctx.r11.u64 = REX_LOAD_U8(ctx.r11.u32 + 1380);
+	// cmplwi r11,0
+	ctx.cr0.compare<uint32_t>(ctx.r11.u32, 0, ctx.xer);
+	// beq 0x82435220
+	if (ctx.cr0.eq) goto loc_82435220;
+	// lwz r3,4(r3)
+	ctx.r3.u64 = REX_LOAD_U32(ctx.r3.u32 + 4);
+	// blr 
+	return;
+loc_82435220:
 	// lwz r3,8(r3)
 	ctx.r3.u64 = REX_LOAD_U32(ctx.r3.u32 + 8);
 	// blr 

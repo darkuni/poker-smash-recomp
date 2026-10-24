@@ -32720,6 +32720,15 @@ DEFINE_REX_FUNC(sub_824DC660) {
 	return;
 }
 
+DEFINE_REX_FUNC(sub_824DC668) {
+	REX_FUNC_PROLOGUE();
+	// addi r3,r3,512
+	ctx.r3.s64 = ctx.r3.s64 + 512;
+	// b 0x824df208
+	sub_824DF208(ctx, base);
+	return;
+}
+
 DEFINE_REX_FUNC(sub_824DC670) {
 	REX_FUNC_PROLOGUE();
 	uint32_t ea{};

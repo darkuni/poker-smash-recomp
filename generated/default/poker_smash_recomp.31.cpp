@@ -47197,6 +47197,13 @@ loc_824B5614:
 	goto loc_824B5608;
 }
 
+DEFINE_REX_FUNC(sub_824B5630) {
+	REX_FUNC_PROLOGUE();
+	// b 0x824b5088
+	sub_824B5088(ctx, base);
+	return;
+}
+
 DEFINE_REX_FUNC(sub_824B5638) {
 	REX_FUNC_PROLOGUE();
 	uint32_t ea{};

@@ -53408,8 +53408,69 @@ loc_82331DE8:
 	goto loc_82331DB4;
 }
 
-DEFINE_REX_FUNC(sub_82331E78) {
+DEFINE_REX_FUNC(sub_82331E08) {
 	REX_FUNC_PROLOGUE();
+	// lwz r6,4(r4)
+	ctx.r6.u64 = REX_LOAD_U32(ctx.r4.u32 + 4);
+	// li r7,0
+	ctx.r7.s64 = 0;
+	// cmplwi r6,0
+	ctx.cr0.compare<uint32_t>(ctx.r6.u32, 0, ctx.xer);
+	// beq 0x82331e70
+	if (ctx.cr0.eq) goto loc_82331E70;
+	// lwz r9,20(r3)
+	ctx.r9.u64 = REX_LOAD_U32(ctx.r3.u32 + 20);
+	// lwz r8,136(r3)
+	ctx.r8.u64 = REX_LOAD_U32(ctx.r3.u32 + 136);
+	// lwz r10,8(r4)
+	ctx.r10.u64 = REX_LOAD_U32(ctx.r4.u32 + 8);
+loc_82331E24:
+	// lwz r11,0(r10)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r10.u32 + 0);
+	// rlwinm r11,r11,2,0,29
+	ctx.r11.u64 = __builtin_rotateleft64(ctx.r11.u32 | (ctx.r11.u64 << 32), 2) & 0xFFFFFFFC;
+	// lwzx r11,r11,r9
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r11.u32 + ctx.r9.u32);
+	// lwz r4,4(r11)
+	ctx.r4.u64 = REX_LOAD_U32(ctx.r11.u32 + 4);
+	// cmplw cr6,r8,r4
+	ctx.cr6.compare<uint32_t>(ctx.r8.u32, ctx.r4.u32, ctx.xer);
+	// bne cr6,0x82331e60
+	if (!ctx.cr6.eq) goto loc_82331E60;
+	// lwz r11,80(r11)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r11.u32 + 80);
+	// cmplw cr6,r11,r5
+	ctx.cr6.compare<uint32_t>(ctx.r11.u32, ctx.r5.u32, ctx.xer);
+	// bge cr6,0x82331e60
+	if (!ctx.cr6.lt) goto loc_82331E60;
+	// lwz r4,24(r3)
+	ctx.r4.u64 = REX_LOAD_U32(ctx.r3.u32 + 24);
+	// rlwinm r11,r11,2,0,29
+	ctx.r11.u64 = __builtin_rotateleft64(ctx.r11.u32 | (ctx.r11.u64 << 32), 2) & 0xFFFFFFFC;
+	// lwzx r11,r11,r4
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r11.u32 + ctx.r4.u32);
+	// lwz r11,0(r11)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r11.u32 + 0);
+	// rlwinm. r11,r11,0,0,11
+	ctx.r11.u64 = __builtin_rotateleft64(ctx.r11.u32 | (ctx.r11.u64 << 32), 0) & 0xFFF00000;
+	ctx.cr0.compare<int32_t>(ctx.r11.s32, 0, ctx.xer);
+	// bne 0x82331e78
+	if (!ctx.cr0.eq) goto loc_82331E78;
+loc_82331E60:
+	// addi r7,r7,1
+	ctx.r7.s64 = ctx.r7.s64 + 1;
+	// addi r10,r10,4
+	ctx.r10.s64 = ctx.r10.s64 + 4;
+	// cmplw cr6,r7,r6
+	ctx.cr6.compare<uint32_t>(ctx.r7.u32, ctx.r6.u32, ctx.xer);
+	// blt cr6,0x82331e24
+	if (ctx.cr6.lt) goto loc_82331E24;
+loc_82331E70:
+	// li r3,0
+	ctx.r3.s64 = 0;
+	// blr 
+	return;
+loc_82331E78:
 	// li r3,1
 	ctx.r3.s64 = 1;
 	// blr 

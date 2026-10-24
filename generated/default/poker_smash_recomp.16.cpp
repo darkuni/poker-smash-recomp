@@ -34814,6 +34814,15 @@ DEFINE_REX_FUNC(sub_822E9670) {
 	return;
 }
 
+DEFINE_REX_FUNC(sub_822E9678) {
+	REX_FUNC_PROLOGUE();
+	// addi r3,r3,-4
+	ctx.r3.s64 = ctx.r3.s64 + -4;
+	// b 0x822e92f0
+	sub_822E92F0(ctx, base);
+	return;
+}
+
 DEFINE_REX_FUNC(sub_822E9680) {
 	REX_FUNC_PROLOGUE();
 	uint32_t ea{};
@@ -48468,6 +48477,19 @@ DEFINE_REX_FUNC(sub_822EF2E8) {
 	return;
 }
 
+DEFINE_REX_FUNC(sub_822EF2F8) {
+	REX_FUNC_PROLOGUE();
+	// lwz r11,0(r3)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r3.u32 + 0);
+	// lwz r11,376(r11)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r11.u32 + 376);
+	// mtctr r11
+	ctx.ctr.u64 = ctx.r11.u64;
+	// bctr 
+	REX_CALL_INDIRECT_FUNC(ctx.ctr.u32);
+	return;
+}
+
 DEFINE_REX_FUNC(sub_822EF308) {
 	REX_FUNC_PROLOGUE();
 	uint32_t ea{};
@@ -48920,6 +48942,106 @@ DEFINE_REX_FUNC(sub_822EF600) {
 	ctx.r4.s64 = ctx.r11.s64 + -1188;
 	// lwz r11,524(r10)
 	ctx.r11.u64 = REX_LOAD_U32(ctx.r10.u32 + 524);
+	// mtctr r11
+	ctx.ctr.u64 = ctx.r11.u64;
+	// bctr 
+	REX_CALL_INDIRECT_FUNC(ctx.ctr.u32);
+	return;
+}
+
+DEFINE_REX_FUNC(sub_822EF628) {
+	REX_FUNC_PROLOGUE();
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// lwz r10,0(r3)
+	ctx.r10.u64 = REX_LOAD_U32(ctx.r3.u32 + 0);
+	// addi r6,r11,-1092
+	ctx.r6.s64 = ctx.r11.s64 + -1092;
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// addi r5,r11,-1116
+	ctx.r5.s64 = ctx.r11.s64 + -1116;
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// addi r4,r11,-1124
+	ctx.r4.s64 = ctx.r11.s64 + -1124;
+	// lwz r11,532(r10)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r10.u32 + 532);
+	// mtctr r11
+	ctx.ctr.u64 = ctx.r11.u64;
+	// bctr 
+	REX_CALL_INDIRECT_FUNC(ctx.ctr.u32);
+	return;
+}
+
+DEFINE_REX_FUNC(sub_822EF650) {
+	REX_FUNC_PROLOGUE();
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// lwz r10,0(r3)
+	ctx.r10.u64 = REX_LOAD_U32(ctx.r3.u32 + 0);
+	// addi r6,r11,-1092
+	ctx.r6.s64 = ctx.r11.s64 + -1092;
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// addi r5,r11,-1116
+	ctx.r5.s64 = ctx.r11.s64 + -1116;
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// addi r4,r11,-1124
+	ctx.r4.s64 = ctx.r11.s64 + -1124;
+	// lwz r11,536(r10)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r10.u32 + 536);
+	// mtctr r11
+	ctx.ctr.u64 = ctx.r11.u64;
+	// bctr 
+	REX_CALL_INDIRECT_FUNC(ctx.ctr.u32);
+	return;
+}
+
+DEFINE_REX_FUNC(sub_822EF678) {
+	REX_FUNC_PROLOGUE();
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// lwz r10,0(r3)
+	ctx.r10.u64 = REX_LOAD_U32(ctx.r3.u32 + 0);
+	// addi r6,r11,-1028
+	ctx.r6.s64 = ctx.r11.s64 + -1028;
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// addi r5,r11,-1048
+	ctx.r5.s64 = ctx.r11.s64 + -1048;
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// addi r4,r11,-1064
+	ctx.r4.s64 = ctx.r11.s64 + -1064;
+	// lwz r11,532(r10)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r10.u32 + 532);
+	// mtctr r11
+	ctx.ctr.u64 = ctx.r11.u64;
+	// bctr 
+	REX_CALL_INDIRECT_FUNC(ctx.ctr.u32);
+	return;
+}
+
+DEFINE_REX_FUNC(sub_822EF6A0) {
+	REX_FUNC_PROLOGUE();
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// lwz r10,0(r3)
+	ctx.r10.u64 = REX_LOAD_U32(ctx.r3.u32 + 0);
+	// addi r6,r11,-1028
+	ctx.r6.s64 = ctx.r11.s64 + -1028;
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// addi r5,r11,-1048
+	ctx.r5.s64 = ctx.r11.s64 + -1048;
+	// lis r11,-32250
+	ctx.r11.s64 = -2113536000;
+	// addi r4,r11,-1064
+	ctx.r4.s64 = ctx.r11.s64 + -1064;
+	// lwz r11,536(r10)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r10.u32 + 536);
 	// mtctr r11
 	ctx.ctr.u64 = ctx.r11.u64;
 	// bctr 
@@ -49497,6 +49619,27 @@ DEFINE_REX_FUNC(sub_822EFAB0) {
 	ctx.r5.u64 = ctx.r4.u64;
 	// li r4,0
 	ctx.r4.s64 = 0;
+	// lwz r11,604(r11)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r11.u32 + 604);
+	// mtctr r11
+	ctx.ctr.u64 = ctx.r11.u64;
+	// bctr 
+	REX_CALL_INDIRECT_FUNC(ctx.ctr.u32);
+	return;
+}
+
+DEFINE_REX_FUNC(sub_822EFAD0) {
+	REX_FUNC_PROLOGUE();
+	// lwz r11,0(r3)
+	ctx.r11.u64 = REX_LOAD_U32(ctx.r3.u32 + 0);
+	// mr r7,r6
+	ctx.r7.u64 = ctx.r6.u64;
+	// mr r6,r5
+	ctx.r6.u64 = ctx.r5.u64;
+	// mr r5,r4
+	ctx.r5.u64 = ctx.r4.u64;
+	// li r4,1
+	ctx.r4.s64 = 1;
 	// lwz r11,604(r11)
 	ctx.r11.u64 = REX_LOAD_U32(ctx.r11.u32 + 604);
 	// mtctr r11

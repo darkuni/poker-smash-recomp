@@ -116,6 +116,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x820E281C, sub_820E281C);
   registrar->SetFunction(0x820E2848, sub_820E2848);
   registrar->SetFunction(0x820E2858, sub_820E2858);
+  registrar->SetFunction(0x820E2868, sub_820E2868);
   registrar->SetFunction(0x820E2878, sub_820E2878);
   registrar->SetFunction(0x820E29C4, sub_820E29C4);
   registrar->SetFunction(0x820E29EC, sub_820E29EC);
@@ -3915,6 +3916,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82170608, sub_82170608);
   registrar->SetFunction(0x82170848, sub_82170848);
   registrar->SetFunction(0x82170BB0, sub_82170BB0);
+  registrar->SetFunction(0x82170C48, sub_82170C48);
   registrar->SetFunction(0x82171148, sub_82171148);
   registrar->SetFunction(0x82171160, sub_82171160);
   registrar->SetFunction(0x821719CC, sub_821719CC);
@@ -3923,6 +3925,8 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82171CB4, sub_82171CB4);
   registrar->SetFunction(0x82171CDC, sub_82171CDC);
   registrar->SetFunction(0x82171D30, sub_82171D30);
+  registrar->SetFunction(0x821723B0, sub_821723B0);
+  registrar->SetFunction(0x82172528, sub_82172528);
   registrar->SetFunction(0x8217254C, sub_8217254C);
   registrar->SetFunction(0x8217256C, sub_8217256C);
   registrar->SetFunction(0x821725B0, sub_821725B0);
@@ -7963,6 +7967,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82218E88, sub_82218E88);
   registrar->SetFunction(0x82218EC0, sub_82218EC0);
   registrar->SetFunction(0x82218FA0, sub_82218FA0);
+  registrar->SetFunction(0x82218FD8, sub_82218FD8);
   registrar->SetFunction(0x82219018, sub_82219018);
   registrar->SetFunction(0x82219088, sub_82219088);
   registrar->SetFunction(0x822190B0, sub_822190B0);
@@ -8413,20 +8418,25 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82225F28, sub_82225F28);
   registrar->SetFunction(0x82225FD8, sub_82225FD8);
   registrar->SetFunction(0x82226058, sub_82226058);
+  registrar->SetFunction(0x82226174, sub_82226174);
   registrar->SetFunction(0x822261CC, sub_822261CC);
   registrar->SetFunction(0x82226208, sub_82226208);
   registrar->SetFunction(0x82226230, sub_82226230);
   registrar->SetFunction(0x82226278, sub_82226278);
+  registrar->SetFunction(0x822262E8, sub_822262E8);
   registrar->SetFunction(0x82226300, sub_82226300);
   registrar->SetFunction(0x82226328, sub_82226328);
   registrar->SetFunction(0x822263F8, sub_822263F8);
+  registrar->SetFunction(0x8222665C, sub_8222665C);
   registrar->SetFunction(0x82226674, sub_82226674);
   registrar->SetFunction(0x82226688, sub_82226688);
+  registrar->SetFunction(0x8222679C, sub_8222679C);
   registrar->SetFunction(0x822267A8, sub_822267A8);
   registrar->SetFunction(0x822267B8, sub_822267B8);
   registrar->SetFunction(0x82226900, sub_82226900);
   registrar->SetFunction(0x82226A70, sub_82226A70);
   registrar->SetFunction(0x82226D30, sub_82226D30);
+  registrar->SetFunction(0x82226E7C, sub_82226E7C);
   registrar->SetFunction(0x82226F38, sub_82226F38);
   registrar->SetFunction(0x82226F50, sub_82226F50);
   registrar->SetFunction(0x82226F9C, sub_82226F9C);
@@ -8485,6 +8495,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82229F18, sub_82229F18);
   registrar->SetFunction(0x82229F28, sub_82229F28);
   registrar->SetFunction(0x82229F58, sub_82229F58);
+  registrar->SetFunction(0x82229FB0, sub_82229FB0);
   registrar->SetFunction(0x82229FE4, sub_82229FE4);
   registrar->SetFunction(0x8222A008, sub_8222A008);
   registrar->SetFunction(0x8222A070, sub_8222A070);
@@ -9203,6 +9214,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82265EB0, sub_82265EB0);
   registrar->SetFunction(0x82265FA8, sub_82265FA8);
   registrar->SetFunction(0x82266168, sub_82266168);
+  registrar->SetFunction(0x82266400, sub_82266400);
   registrar->SetFunction(0x82266408, sub_82266408);
   registrar->SetFunction(0x82266648, sub_82266648);
   registrar->SetFunction(0x82266698, sub_82266698);
@@ -9637,6 +9649,8 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x8229E5A0, sub_8229E5A0);
   registrar->SetFunction(0x8229E5A8, sub_8229E5A8);
   registrar->SetFunction(0x8229E5B0, sub_8229E5B0);
+  registrar->SetFunction(0x8229E5B8, sub_8229E5B8);
+  registrar->SetFunction(0x8229E5C0, sub_8229E5C0);
   registrar->SetFunction(0x8229E5D8, sub_8229E5D8);
   registrar->SetFunction(0x8229E648, sub_8229E648);
   registrar->SetFunction(0x8229E6F8, sub_8229E6F8);
@@ -9819,6 +9833,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x822B83B0, sub_822B83B0);
   registrar->SetFunction(0x822B86A0, sub_822B86A0);
   registrar->SetFunction(0x822B8818, sub_822B8818);
+  registrar->SetFunction(0x822B9410, sub_822B9410);
   registrar->SetFunction(0x822B9770, sub_822B9770);
   registrar->SetFunction(0x822B9780, sub_822B9780);
   registrar->SetFunction(0x822B9818, sub_822B9818);
@@ -9966,6 +9981,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x822CC910, sub_822CC910);
   registrar->SetFunction(0x822CCEF8, sub_822CCEF8);
   registrar->SetFunction(0x822CD178, sub_822CD178);
+  registrar->SetFunction(0x822CD3A8, sub_822CD3A8);
   registrar->SetFunction(0x822CD3B0, sub_822CD3B0);
   registrar->SetFunction(0x822CD6D0, sub_822CD6D0);
   registrar->SetFunction(0x822CD730, sub_822CD730);
@@ -10276,6 +10292,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x822E9558, sub_822E9558);
   registrar->SetFunction(0x822E9668, sub_822E9668);
   registrar->SetFunction(0x822E9670, sub_822E9670);
+  registrar->SetFunction(0x822E9678, sub_822E9678);
   registrar->SetFunction(0x822E9680, sub_822E9680);
   registrar->SetFunction(0x822E96D0, sub_822E96D0);
   registrar->SetFunction(0x822E9750, sub_822E9750);
@@ -10353,10 +10370,15 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x822EE988, sub_822EE988);
   registrar->SetFunction(0x822EF1D8, sub_822EF1D8);
   registrar->SetFunction(0x822EF2E8, sub_822EF2E8);
+  registrar->SetFunction(0x822EF2F8, sub_822EF2F8);
   registrar->SetFunction(0x822EF308, sub_822EF308);
   registrar->SetFunction(0x822EF358, sub_822EF358);
   registrar->SetFunction(0x822EF538, sub_822EF538);
   registrar->SetFunction(0x822EF600, sub_822EF600);
+  registrar->SetFunction(0x822EF628, sub_822EF628);
+  registrar->SetFunction(0x822EF650, sub_822EF650);
+  registrar->SetFunction(0x822EF678, sub_822EF678);
+  registrar->SetFunction(0x822EF6A0, sub_822EF6A0);
   registrar->SetFunction(0x822EF6C8, sub_822EF6C8);
   registrar->SetFunction(0x822EF848, sub_822EF848);
   registrar->SetFunction(0x822EF860, sub_822EF860);
@@ -10365,6 +10387,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x822EF8A8, sub_822EF8A8);
   registrar->SetFunction(0x822EFAA8, sub_822EFAA8);
   registrar->SetFunction(0x822EFAB0, sub_822EFAB0);
+  registrar->SetFunction(0x822EFAD0, sub_822EFAD0);
   registrar->SetFunction(0x822EFB90, sub_822EFB90);
   registrar->SetFunction(0x822EFBE0, sub_822EFBE0);
   registrar->SetFunction(0x822EFC80, sub_822EFC80);
@@ -10884,7 +10907,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x823311A0, sub_823311A0);
   registrar->SetFunction(0x82331260, sub_82331260);
   registrar->SetFunction(0x82331378, sub_82331378);
-  registrar->SetFunction(0x82331E78, sub_82331E78);
+  registrar->SetFunction(0x82331E08, sub_82331E08);
   registrar->SetFunction(0x82331E80, sub_82331E80);
   registrar->SetFunction(0x823320C0, sub_823320C0);
   registrar->SetFunction(0x82332118, sub_82332118);
@@ -11474,6 +11497,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82369168, sub_82369168);
   registrar->SetFunction(0x823695A0, sub_823695A0);
   registrar->SetFunction(0x82369658, sub_82369658);
+  registrar->SetFunction(0x82369710, sub_82369710);
   registrar->SetFunction(0x82369748, sub_82369748);
   registrar->SetFunction(0x82369758, sub_82369758);
   registrar->SetFunction(0x82369918, sub_82369918);
@@ -11506,6 +11530,8 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x8236B7D8, sub_8236B7D8);
   registrar->SetFunction(0x8236B830, sub_8236B830);
   registrar->SetFunction(0x8236B9E8, sub_8236B9E8);
+  registrar->SetFunction(0x8236BA3C, sub_8236BA3C);
+  registrar->SetFunction(0x8236BA74, sub_8236BA74);
   registrar->SetFunction(0x8236BAA0, sub_8236BAA0);
   registrar->SetFunction(0x8236BAAC, sub_8236BAAC);
   registrar->SetFunction(0x8236BAB8, sub_8236BAB8);
@@ -11516,8 +11542,10 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x8236C010, sub_8236C010);
   registrar->SetFunction(0x8236C1F8, sub_8236C1F8);
   registrar->SetFunction(0x8236C300, sub_8236C300);
+  registrar->SetFunction(0x8236C418, sub_8236C418);
   registrar->SetFunction(0x8236C448, sub_8236C448);
   registrar->SetFunction(0x8236C460, sub_8236C460);
+  registrar->SetFunction(0x8236C578, sub_8236C578);
   registrar->SetFunction(0x8236C5A8, sub_8236C5A8);
   registrar->SetFunction(0x8236C5B8, sub_8236C5B8);
   registrar->SetFunction(0x8236C5D8, sub_8236C5D8);
@@ -11834,6 +11862,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82389090, sub_82389090);
   registrar->SetFunction(0x82389358, sub_82389358);
   registrar->SetFunction(0x82389630, sub_82389630);
+  registrar->SetFunction(0x82389744, sub_82389744);
   registrar->SetFunction(0x82389788, sub_82389788);
   registrar->SetFunction(0x82389798, sub_82389798);
   registrar->SetFunction(0x823897A0, sub_823897A0);
@@ -12944,7 +12973,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82435078, sub_82435078);
   registrar->SetFunction(0x82435098, sub_82435098);
   registrar->SetFunction(0x824351D8, sub_824351D8);
-  registrar->SetFunction(0x82435220, sub_82435220);
+  registrar->SetFunction(0x82435208, sub_82435208);
   registrar->SetFunction(0x82435228, sub_82435228);
   registrar->SetFunction(0x82435230, sub_82435230);
   registrar->SetFunction(0x82435358, sub_82435358);
@@ -14036,6 +14065,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x8248F648, sub_8248F648);
   registrar->SetFunction(0x8248F710, sub_8248F710);
   registrar->SetFunction(0x8248F730, sub_8248F730);
+  registrar->SetFunction(0x8248F750, sub_8248F750);
   registrar->SetFunction(0x8248F768, sub_8248F768);
   registrar->SetFunction(0x8248F7F0, sub_8248F7F0);
   registrar->SetFunction(0x8248F878, sub_8248F878);
@@ -14112,13 +14142,16 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82494CD8, sub_82494CD8);
   registrar->SetFunction(0x82494CF0, sub_82494CF0);
   registrar->SetFunction(0x82494D50, sub_82494D50);
+  registrar->SetFunction(0x82494D58, sub_82494D58);
   registrar->SetFunction(0x82494D60, sub_82494D60);
+  registrar->SetFunction(0x82494D68, sub_82494D68);
   registrar->SetFunction(0x82494D78, sub_82494D78);
   registrar->SetFunction(0x82494DA8, sub_82494DA8);
   registrar->SetFunction(0x82494DF0, sub_82494DF0);
   registrar->SetFunction(0x82494ED0, sub_82494ED0);
   registrar->SetFunction(0x82494FD0, sub_82494FD0);
   registrar->SetFunction(0x82495060, sub_82495060);
+  registrar->SetFunction(0x82495068, sub_82495068);
   registrar->SetFunction(0x82495080, sub_82495080);
   registrar->SetFunction(0x82495090, sub_82495090);
   registrar->SetFunction(0x824950A0, sub_824950A0);
@@ -14219,8 +14252,8 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82498518, sub_82498518);
   registrar->SetFunction(0x824985E0, sub_824985E0);
   registrar->SetFunction(0x82498678, sub_82498678);
-  registrar->SetFunction(0x824986E4, sub_824986E4);
-  registrar->SetFunction(0x82498724, sub_82498724);
+  registrar->SetFunction(0x824986C0, sub_824986C0);
+  registrar->SetFunction(0x82498708, sub_82498708);
   registrar->SetFunction(0x82498740, sub_82498740);
   registrar->SetFunction(0x82498778, sub_82498778);
   registrar->SetFunction(0x82498818, sub_82498818);
@@ -14289,10 +14322,14 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x8249D160, sub_8249D160);
   registrar->SetFunction(0x8249D168, sub_8249D168);
   registrar->SetFunction(0x8249D170, sub_8249D170);
+  registrar->SetFunction(0x8249D178, sub_8249D178);
+  registrar->SetFunction(0x8249D180, sub_8249D180);
+  registrar->SetFunction(0x8249D188, sub_8249D188);
   registrar->SetFunction(0x8249D190, sub_8249D190);
   registrar->SetFunction(0x8249D198, sub_8249D198);
   registrar->SetFunction(0x8249D1A0, sub_8249D1A0);
   registrar->SetFunction(0x8249D1A8, sub_8249D1A8);
+  registrar->SetFunction(0x8249D1B0, sub_8249D1B0);
   registrar->SetFunction(0x8249D1B8, sub_8249D1B8);
   registrar->SetFunction(0x8249D1C0, sub_8249D1C0);
   registrar->SetFunction(0x8249D1E8, sub_8249D1E8);
@@ -14301,6 +14338,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x8249DF10, sub_8249DF10);
   registrar->SetFunction(0x8249E0F0, sub_8249E0F0);
   registrar->SetFunction(0x8249E0F8, sub_8249E0F8);
+  registrar->SetFunction(0x8249E100, sub_8249E100);
   registrar->SetFunction(0x8249E108, sub_8249E108);
   registrar->SetFunction(0x8249E278, sub_8249E278);
   registrar->SetFunction(0x8249ECF8, sub_8249ECF8);
@@ -14321,11 +14359,16 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x8249F158, sub_8249F158);
   registrar->SetFunction(0x8249F258, sub_8249F258);
   registrar->SetFunction(0x8249F260, sub_8249F260);
+  registrar->SetFunction(0x8249F268, sub_8249F268);
+  registrar->SetFunction(0x8249F270, sub_8249F270);
   registrar->SetFunction(0x8249F278, sub_8249F278);
   registrar->SetFunction(0x8249F280, sub_8249F280);
+  registrar->SetFunction(0x8249F288, sub_8249F288);
   registrar->SetFunction(0x8249F290, sub_8249F290);
   registrar->SetFunction(0x8249F298, sub_8249F298);
+  registrar->SetFunction(0x8249F2A0, sub_8249F2A0);
   registrar->SetFunction(0x8249F2A8, sub_8249F2A8);
+  registrar->SetFunction(0x8249F2B0, sub_8249F2B0);
   registrar->SetFunction(0x8249F2B8, sub_8249F2B8);
   registrar->SetFunction(0x8249F2C0, sub_8249F2C0);
   registrar->SetFunction(0x8249F390, sub_8249F390);
@@ -14517,6 +14560,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x824B5138, sub_824B5138);
   registrar->SetFunction(0x824B5308, sub_824B5308);
   registrar->SetFunction(0x824B5468, sub_824B5468);
+  registrar->SetFunction(0x824B5630, sub_824B5630);
   registrar->SetFunction(0x824B5638, sub_824B5638);
   registrar->SetFunction(0x824B56A0, sub_824B56A0);
   registrar->SetFunction(0x824B5828, sub_824B5828);
@@ -14800,6 +14844,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x824C7030, sub_824C7030);
   registrar->SetFunction(0x824C7338, sub_824C7338);
   registrar->SetFunction(0x824C73F0, sub_824C73F0);
+  registrar->SetFunction(0x824C7598, sub_824C7598);
   registrar->SetFunction(0x824C75B0, sub_824C75B0);
   registrar->SetFunction(0x824C75B8, sub_824C75B8);
   registrar->SetFunction(0x824C75D8, sub_824C75D8);
@@ -15406,6 +15451,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x824DC578, sub_824DC578);
   registrar->SetFunction(0x824DC5E8, sub_824DC5E8);
   registrar->SetFunction(0x824DC660, sub_824DC660);
+  registrar->SetFunction(0x824DC668, sub_824DC668);
   registrar->SetFunction(0x824DC670, sub_824DC670);
   registrar->SetFunction(0x824DC6F8, sub_824DC6F8);
   registrar->SetFunction(0x824DC888, sub_824DC888);
@@ -17268,6 +17314,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x826371A8, sub_826371A8);
   registrar->SetFunction(0x82637208, sub_82637208);
   registrar->SetFunction(0x82637230, sub_82637230);
+  registrar->SetFunction(0x826372B0, sub_826372B0);
   registrar->SetFunction(0x826372D0, sub_826372D0);
   registrar->SetFunction(0x826372E0, sub_826372E0);
   registrar->SetFunction(0x82637348, sub_82637348);
@@ -17275,6 +17322,7 @@ void poker_smash_RegisterFunctions(rex::runtime::IModuleRegistrar* registrar) {
   registrar->SetFunction(0x82637438, sub_82637438);
   registrar->SetFunction(0x826374C8, sub_826374C8);
   registrar->SetFunction(0x826374F8, sub_826374F8);
+  registrar->SetFunction(0x82637580, sub_82637580);
   registrar->SetFunction(0x826375A0, sub_826375A0);
   registrar->SetFunction(0x826375B0, sub_826375B0);
   registrar->SetFunction(0x82637640, sub_82637640);

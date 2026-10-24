@@ -7,6 +7,62 @@
 0x821B32F8 = { end = 0x821B3360 }
 0x821CC480 = { end = 0x821CC4E8 }
 
+# Functions only reachable through vtables / function pointers (no bl, no
+# pdata entry), found by scanning .rdata/.data for pointers into .text that
+# land right after a blr/bctr/b/padding. First crash was 0x8248F750.
+0x820E2868 = {}
+0x82170C48 = {}
+0x821723B0 = {}
+0x82172528 = {}
+0x82218FD8 = {}
+0x82226174 = {}
+0x822262E8 = {}
+0x8222665C = {}
+0x8222679C = {}
+0x82226E7C = {}
+0x82229FB0 = {}
+0x82266400 = {}
+0x8229E5B8 = {}
+0x8229E5C0 = {}
+0x822B9410 = {}
+0x822CD3A8 = {}
+0x822E9678 = {}
+0x822EF2F8 = {}
+0x822EF628 = {}
+0x822EF650 = {}
+0x822EF678 = {}
+0x822EF6A0 = {}
+0x822EFAD0 = {}
+0x82331E08 = {}
+0x82369710 = {}
+0x8236BA3C = {}
+0x8236BA74 = {}
+0x8236C418 = {}
+0x8236C578 = {}
+0x82389744 = {}
+0x82435208 = {}
+0x8248F750 = {}
+0x82494D58 = {}
+0x82494D68 = {}
+0x82495068 = {}
+0x824986C0 = {}
+0x82498708 = {}
+0x8249D178 = {}
+0x8249D180 = {}
+0x8249D188 = {}
+0x8249D1B0 = {}
+0x8249E100 = {}
+0x8249F268 = {}
+0x8249F270 = {}
+0x8249F288 = {}
+0x8249F2A0 = {}
+0x8249F2B0 = {}
+0x824B5630 = {}
+0x824C7598 = {}
+0x824DC668 = {}
+0x826372B0 = {}
+0x82637580 = {}
+
 # Byte-offset jump table at 0x82082E98 has no bounds check; the scanner read
 # past its 44 entries into the next table. Real length = 44.
 [[switch_tables]]
