@@ -14,6 +14,7 @@ include(generated/rexglue.cmake)
 set(POKERSMASH_SOURCES
     src/main.cpp
     src/usbcam_stubs.cpp
+    src/game_menu.cpp
 )
 
 if(WIN32)
