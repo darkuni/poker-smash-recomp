@@ -7,8 +7,9 @@ on:
 
 env:
   REXGLUE_SDK_REF: v0.9.0
-  # Prebuilt package from darkuni/rexglue-sdk-builds: SDK_REF + its patches/.
-  REXGLUE_SDK_PKG: v0.9.0-p3
+  # Prebuilt package from darkuni/rexglue-sdk-builds. Pinned to the stock SDK
+  # (no patches): this game sounds right on it. OutRun carries the XMA experiments.
+  REXGLUE_SDK_PKG: v0.9.0
 
 jobs:
   build:
