@@ -58,5 +58,4 @@ set(GENERATED_SOURCES
     ${CMAKE_CURRENT_LIST_DIR}/poker_smash_recomp.48.cpp
     ${CMAKE_CURRENT_LIST_DIR}/poker_smash_recomp.49.cpp
     ${CMAKE_CURRENT_LIST_DIR}/poker_smash_recomp.50.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/poker_smash_recomp.51.cpp
 )
