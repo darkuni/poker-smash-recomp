@@ -34,16 +34,32 @@ jobs:
           cmake --version
           ninja --version
 
-      # ---------- ReXGlue SDK (cached install) ----------
+      # ---------- ReXGlue SDK ----------
+      # 1) Prebuilt package from darkuni/rexglue-sdk-builds (fast path).
+      # 2) Fallback: this repo's cache, else compile the SDK here.
+      - name: Download prebuilt SDK
+        id: sdk-prebuilt
+        shell: pwsh
+        continue-on-error: true
+        run: |
+          $url = "https://github.com/darkuni/rexglue-sdk-builds/releases/download/sdk-$env:REXGLUE_SDK_REF/rexglue-sdk-$env:REXGLUE_SDK_REF-win-amd64-release.zip"
+          Invoke-WebRequest -Uri $url -OutFile sdk.zip
+          Expand-Archive sdk.zip -DestinationPath rexglue-sdk-install
+          Get-Content rexglue-sdk-install\BUILD_INFO.txt
+          "ok=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
       - name: Restore SDK install cache
         id: sdk-cache
+        if: steps.sdk-prebuilt.outputs.ok != 'true'
         uses: actions/cache@v4
         with:
           path: rexglue-sdk-install
-          key: rexglue-sdk-${{ env.REXGLUE_SDK_REF }}-win-amd64-${{ hashFiles('.github/workflows/build-windows.yml') }}
+          key: rexglue-sdk-${{ env.REXGLUE_SDK_REF }}-win-amd64-v2
+          restore-keys: |
+            rexglue-sdk-${{ env.REXGLUE_SDK_REF }}-win-amd64-
 
       - name: Checkout ReXGlue SDK
-        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        if: steps.sdk-prebuilt.outputs.ok != 'true' && steps.sdk-cache.outputs.cache-matched-key == ''
         uses: actions/checkout@v4
         with:
           repository: rexglue/rexglue-sdk
@@ -52,7 +68,7 @@ jobs:
           submodules: recursive
 
       - name: Build and install SDK
-        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        if: steps.sdk-prebuilt.outputs.ok != 'true' && steps.sdk-cache.outputs.cache-matched-key == ''
         shell: pwsh
         working-directory: rexglue-sdk
         run: |
