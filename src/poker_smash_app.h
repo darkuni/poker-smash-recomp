@@ -20,6 +20,8 @@
 
 #include "game_menu.h"
 
+void InstallCrashHandler();  // src/crash_handler.cpp
+
 class PokerSmashApp : public rex::ReXApp {
  public:
   using rex::ReXApp::ReXApp;
@@ -96,6 +98,7 @@ class PokerSmashApp : public rex::ReXApp {
 
   // The game must not see keys/buttons while the menu is open.
   void OnPostSetup() override {
+    InstallCrashHandler();  // re-assert after SDL/runtime init
     auto* input_sys = static_cast<rex::input::InputSystem*>(runtime()->input_system());
     if (input_sys && imgui_drawer()) {
       input_sys->SetActiveCallback([this]() {

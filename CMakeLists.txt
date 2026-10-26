@@ -15,6 +15,7 @@ set(POKERSMASH_SOURCES
     src/main.cpp
     src/usbcam_stubs.cpp
     src/game_menu.cpp
+    src/crash_handler.cpp
 )
 
 if(WIN32)
@@ -24,3 +25,9 @@ else()
 endif()
 
 rexglue_setup_target(poker_smash GPU_PLUGINS xenos)
+
+# Linker map: turns crash-report offsets (poker_smash.exe+0x...) into
+# recompiled function names (sub_82xxxxxx = guest address).
+if(WIN32)
+    target_link_options(poker_smash PRIVATE "LINKER:/MAP:${CMAKE_BINARY_DIR}/poker_smash.map")
+endif()
