@@ -16,6 +16,7 @@ set(POKERSMASH_SOURCES
     src/usbcam_stubs.cpp
     src/game_menu.cpp
     src/crash_handler.cpp
+    src/package_setup.cpp
 )
 
 if(WIN32)

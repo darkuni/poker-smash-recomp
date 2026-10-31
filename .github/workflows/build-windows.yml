@@ -1,9 +1,17 @@
 name: Build Windows
 
+# Every push to main builds the package (download it from the run's "Artifacts").
+# Publishing a GitHub Release (or pushing a v* tag) also attaches the zip to that release.
 on:
   push:
     branches: [main]
+    tags: ['v*']
+  release:
+    types: [published]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 env:
   REXGLUE_SDK_REF: v0.9.0
@@ -131,13 +139,31 @@ jobs:
             Where-Object { -not (Test-Path ("dist\" + $_.Name)) } | Copy-Item -Destination dist\
           @"
           Poker Smash - native Windows build (ReXGlue static recompilation)
+          https://github.com/darkuni/poker-smash-recomp
 
-          Game files are NOT included. Copy the contents of your extracted
-          Poker Smash package (default.xex, file_bundle.bin, loading_bundle.bin,
-          Data\ folder, etc.) into a folder named "assets" next to poker_smash.exe,
-          then run poker_smash.exe. (Or point at another folder with
-          --game_data_root=C:\path\to\files)
+          Game files are NOT included. You need your own Poker Smash XBLA package
+          (the Xbox 360 LIVE file from your console's storage).
+
+          Setup
+            Put your package file in this folder and run poker_smash.exe. On the first start it makes
+            the "assets" folder from it; after that the package isn't needed any more. The package can be
+            the file on its own or the whole folder copied from the console (5841089C\000D0000\...).
+            (Already extracted? Put default.xex and the other game files in an "assets" folder instead.)
+            If Windows says a DLL (e.g. VCRUNTIME140.dll) is missing, install the Microsoft Visual C++
+            Redistributable 2015-2022 (x64): https://aka.ms/vs/17/release/vc_redist.x64.exe
+
+          F1 / Esc: settings. F11: fullscreen. F3: performance overlay. Settings are saved in poker_smash.toml.
+          Crash reports: crash-*.txt + .dmp next to the exe (poker_smash.map decodes them).
+
+          Unofficial fan project, not affiliated with or endorsed by Void Star Creations or Microsoft. The exe
+          contains code machine-translated from the game's executable; game data comes from your own package.
+          ReXGlue SDK: BSD-3-Clause (portions from Xenia) - see licenses\.
           "@ | Out-File dist\README.txt -Encoding utf8
+          New-Item -ItemType Directory -Force dist\licenses | Out-Null
+          Copy-Item LICENSE dist\licenses\poker-smash-recomp-LICENSE.txt
+          if (Test-Path "$env:GITHUB_WORKSPACE\rexglue-sdk-install\share\licenses") {
+            Copy-Item -Recurse "$env:GITHUB_WORKSPACE\rexglue-sdk-install\share\licenses\*" dist\licenses\
+          }
           Get-ChildItem dist
 
       - name: Upload build
@@ -145,3 +171,20 @@ jobs:
         with:
           name: poker_smash-win-amd64
           path: dist/
+
+      - name: Zip for release
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: |
+          $zip = "PokerSmash-$env:GITHUB_REF_NAME-win64.zip"
+          New-Item -ItemType Directory -Force pkg\PokerSmash | Out-Null
+          Copy-Item -Recurse dist\* pkg\PokerSmash\
+          Compress-Archive -Path pkg\PokerSmash -DestinationPath $zip
+          "ZIP=$zip" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP }}
+          generate_release_notes: true

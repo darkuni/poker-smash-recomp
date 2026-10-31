@@ -1,11 +1,20 @@
-# Poker Smash Recompiled (private)
+# Poker Smash Recompiled
 
 Static recompilation of **Poker Smash** (Xbox 360 XBLA, Void Star Creations, 2008; Title ID 5841089C, TU 0.0.1.4) to native Windows, using the [ReXGlue SDK](https://github.com/rexglue/rexglue-sdk) v0.9.0.
 
-**Private repo.** `generated/` is the game's own PowerPC code machine-translated to C++. No game data is committed - you supply your own dump.
+**No game data is included.** You need your own Poker Smash XBLA package (the Xbox 360 LIVE file from your console's
+storage).
 
-## Getting a build
-GitHub Actions builds on every push to `main` (or run **Build Windows** by hand from the Actions tab). Download the `poker_smash-win-amd64` artifact from the run, unzip it, and put your extracted game files in an `assets` folder next to `poker_smash.exe`:
+## Download
+Get the latest `PokerSmash-<version>-win64.zip` from [Releases](https://github.com/darkuni/poker-smash-recomp/releases),
+unzip it, put your package file (or the `5841089C` folder copied from the console) in the same folder and run
+`poker_smash.exe`: the first start makes the `assets` folder from it. Nothing else to install. Requirements: 64-bit
+Windows 10/11 and the [Microsoft Visual C++ Redistributable 2015-2022 (x64)](https://aka.ms/vs/17/release/vc_redist.x64.exe).
+
+## Building
+GitHub Actions builds on every push to `main` (or run **Build Windows** by hand from the Actions tab); publishing a
+release attaches the zip to it. Unzip a build and put your extracted game files in an `assets` folder next to
+`poker_smash.exe` (`tools/stfs_extract.py <package> assets` extracts the package):
 
 ```
 poker_smash.exe
@@ -64,4 +73,10 @@ rexglue codegen poker_smash_manifest.toml
 - `0x8211D620`, `0x821B32F8`, `0x821CC480`: C++ EH catch funclets that end in a noreturn call (`bl 0x8221FE20`); analyzer ran into the next funclet. Ends pinned.
 - Jump table at `bctr 0x824C5538` (byte table @ `0x82082E98`, no bounds check): analyzer read 56 entries, real count 44.
 
-Not affiliated with or endorsed by Void Star Creations or Microsoft.
+
+## Disclaimer
+Unofficial fan project, not affiliated with or endorsed by Void Star Creations or Microsoft. This repository and its
+releases contain no game data (graphics, sound, music): those come from your own package. `generated/` and the release
+exe contain code machine-translated from the game's executable. The project's own code is under the
+[MIT License](LICENSE); the ReXGlue SDK is BSD-3-Clause (portions derived from Xenia), and its licenses ship in the
+release zip.

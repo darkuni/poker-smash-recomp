@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <cstdlib>
 #include <filesystem>
 
 #include <rex/cvar.h>
@@ -19,6 +20,7 @@
 #include <imgui.h>
 
 #include "game_menu.h"
+#include "package_setup.h"
 
 void InstallCrashHandler();  // src/crash_handler.cpp
 
@@ -38,6 +40,12 @@ class PokerSmashApp : public rex::ReXApp {
     if (paths.game_data_root.empty()) {
       paths.game_data_root =
           rex::filesystem::GetExecutableFolder() / "assets";
+      // First start: make "assets" from the player's own XBLA package next to the exe.
+      if (!package_setup_first_run(rex::filesystem::GetExecutableFolder(),
+                                   paths.game_data_root, 0x5841089Cu,
+                                   "Poker Smash")) {
+        std::exit(1);
+      }
     }
     config_path_ = paths.config_path;
   }
