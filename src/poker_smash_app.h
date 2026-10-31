@@ -47,6 +47,10 @@ class PokerSmashApp : public rex::ReXApp {
         std::exit(1);
       }
     }
+    // Only the exact executable this build was recompiled from can run.
+    if (!xex_version_check(paths.game_data_root, "9f427e7e8cc3fb48d5d5a2a61db4c0a14af93b7c", 7544832u, "Poker Smash")) {
+      std::exit(1);
+    }
     config_path_ = paths.config_path;
   }
 
